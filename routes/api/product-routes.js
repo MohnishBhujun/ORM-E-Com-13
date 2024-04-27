@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product, Category, Tag, ProductTag } = require('../../models');
+const { Product, Category, Tags, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
 
@@ -7,7 +7,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const products = await Product.findAll({
-      include: [{model: Category}, {model: Tag}],
+      include: [{model: Category}, {model: Tags}],
     });
     res.status(200).json(products);
   } catch (err) {
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const product = await Product.findByPk(req.params.id, {
-      include: [{model: Category}, {model: Tag}],
+      include: [{model: Category}, {model: Tags}],
     });
     !product
     ?res.status(404).json({message: 'Product Not Found!'})
@@ -31,14 +31,6 @@ router.get('/:id', async (req, res) => {
 
 // create new product
 router.post('/', (req, res) => {
-  /* req.body should look like this...
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
-    }
-  */
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
@@ -94,7 +86,7 @@ router.put("/:id", async(req, res) => {
     }
 
     // Fetch and return product details with associated tags, and handling errors.
-    const product = await Product.findByPk(req.params.id, {include: [{model: Tag}]});
+    const product = await Product.findByPk(req.params.id, {include: [{model: Tags}]});
     return res.json(product);
   } catch (error) {
     console.log(error);
