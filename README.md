@@ -18,3 +18,6 @@ Open integrated terminal on server.js in order to run "npm install" on the comma
 
 Below is a video showing how to run and the usage of the application:
 
+
+https://github.com/MohnishBhujun/ORM-E-Com-13/assets/149837818/920a2ee3-d268-41ad-9a25-f366193978d4
+
