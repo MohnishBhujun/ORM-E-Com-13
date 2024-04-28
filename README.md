@@ -6,7 +6,7 @@ Welcome to an e-commerce backend project! This project was done as a challenge t
 ## Installation
 To install, first create a new repository in your Github account, and then clone this repository to your local computer.
 
-To clone: git clone https://github.com/your-username/repository-name.git   
+To clone: git clone https://github.com/MohnishBhujun/ORM-E-Com-13 
 
 Install Express.js [v4.16.4].
 
